@@ -12,21 +12,34 @@ namespace StudentCRUD
 {
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
-        List<Student> students = new List<Student>(); // Student List
+        // Student List
+        List<Student> students = new List<Student>(); 
 
+        // form
         public Form1()
         {
             InitializeComponent();
             gcStudents.DataSource = students;
         }
 
+        // student add button
         public void btnAdd_Click(object sender, EventArgs e)
         {
             students.Add(new Student { FirstName = txtbxFirstName.Text, MiddleName = txtbxMiddleName.Text, LastName = txtbxLastName.Text, NameExtension = txtbxNameExtension.Text, Gender = cbGender.SelectedText, BirthDate = dteditBirthDate.DateTime });
+            LoadData();
         }
 
+        // load data button
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        // load data method
+        private void LoadData()
+        {
+            gcStudents.DataSource = null;
+            gcStudents.DataSource = students;
         }
     }
 }

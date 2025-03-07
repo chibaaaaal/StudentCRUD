@@ -79,9 +79,17 @@ namespace StudentCRUD
             ClearTextBox();
         }
 
+        // delete button
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            string FirstName = Convert.ToString(gvStudents.GetFocusedRowCellValue("FirstName"));
+            int id = Convert.ToInt32(FirstName);
+            if (id != null)
+            {
+                
+                students.RemoveAt(Convert.ToInt32(id));
+                LoadData();
+            }
         }
     }
 }
